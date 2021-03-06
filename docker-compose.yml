@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    builder:
+        container_name: builder
+        restart: unless-stopped
+        env_file: .env
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+            args:
+                - DOCKER_WORK_DIR=${DOCKER_WORK_DIR}
+        working_dir: ${DOCKER_WORK_DIR}
+        entrypoint: 'mkdir build && cd ./build && cmake .. && make -j `nproc`'
