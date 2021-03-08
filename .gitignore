@@ -46,3 +46,6 @@ xcuserdata
 # CLion
 .idea/
 cmake-build-debug/
+
+# Environment variables
+.env
